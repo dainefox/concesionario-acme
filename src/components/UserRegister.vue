@@ -11,22 +11,22 @@
     :color="color"
     :fncancel="close"
   >
-    <owner-form />
+    <user-form :user="user" />
   </create-modal>
 </template>
 
 <script>
   export default {
-    name: 'OwnerRegister',
+    name: 'UserRegister',
 
     components: {
       CreateModal: () => import(/* webpackChunkName: "create-modal" */ '@/components/CreateModal.vue'),
-      OwnerForm: () => import(/* webpackChunkName: "owner-form" */ '@/components/OwnerForm.vue'),
+      UserForm: () => import(/* webpackChunkName: "user-form" */ '@/components/UserForm.vue'),
     },
 
     props: {
-      title: { type: String, required: false, default: 'propietario' },
-      icon: { type: [String, Boolean], default: 'mdi-account-plus' },
+      title: { type: String, required: false, default: 'usuario' },
+      icon: { type: [String, Boolean], default: 'mdi-account-plus-outline' },
       fab: { type: Boolean, default: true },
       float: { type: Boolean, default: true },
       fixed: { type: Boolean, default: true },
@@ -36,22 +36,22 @@
     },
 
     data: () => ({
-      owner: false,
+      user: false,
     }),
 
     computed: {
       computedTitle () {
-        return `${this.owner ? 'Editar' : 'Registrar'} ${this.title}`
+        return `${this.user ? 'Editar' : 'Registrar'} ${this.title}`
       },
     },
 
     methods: {
-      open (owner) {
-        this.owner = owner
+      open (user) {
+        this.user = user
         this.$refs.modal.open()
       },
       close () {
-        if (this.owner) this.owner = false
+        if (this.user) this.user = false
       },
     },
   }

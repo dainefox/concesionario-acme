@@ -57,6 +57,11 @@ const router = new Router({
               path: 'add',
               component: () => import(/* webpackChunkName: "RegisterVehicle" */ '@/views/RegisterVehicle'),
             },
+            {
+              path: 'edit/:licencePlate',
+              component: () => import(/* webpackChunkName: "EditVehicle" */ '@/views/RegisterVehicle'),
+              props: route => ({ licencePlate: route.params.licencePlate }),
+            },
           ],
         },
         {
@@ -81,7 +86,21 @@ const router = new Router({
               path: 'add',
               component: () => import(/* webpackChunkName: "RegisterPost" */ '@/views/RegisterPost'),
             },
+            {
+              path: 'buy/:id',
+              component: () => import(/* webpackChunkName: "RegisterBuyDirect" */ '@/views/RegisterBuy'),
+              props: route => ({ id: route.params.id }),
+            },
+            {
+              path: 'buy-as-intermediary/:id',
+              component: () => import(/* webpackChunkName: "RegisterBuyIntermediary" */ '@/views/RegisterPost'),
+              props: route => ({ id: route.params.id }),
+            },
           ],
+        },
+        {
+          path: 'users',
+          component: () => import(/* webpackChunkName: "Users" */ '@/views/Users'),
         },
       ],
       '/dashboard',

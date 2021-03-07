@@ -2,12 +2,14 @@
   <v-row>
     <post-item
       v-for="(post, index) in posts"
-      :key="index"
+      :id="post.id"
+      :key="`${index}-${post.id}`"
       :image="post.image"
       :title="post.title"
       :subtitle="post.subtitle"
-      icon="mdi-fire"
       :date="post.date"
+      :flag="post.intermediary"
+      :fn-post="fnPost"
     />
   </v-row>
 </template>
@@ -21,10 +23,8 @@
     },
 
     props: {
-      posts: {
-        type: Array,
-        default: () => ([]),
-      },
+      posts: { type: Array, default: () => ([]) },
+      fnPost: { type: Function },
     },
   }
 </script>

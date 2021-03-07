@@ -16,7 +16,7 @@
       </h4>
 
       <owner-register
-        title="Buscar o registrar propietario"
+        title="o buscar propietario"
         rounded
         color="primary"
         :icon="false"

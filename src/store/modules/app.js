@@ -13,9 +13,14 @@ const state = {
       to: '/dashboard/home',
     },
     {
-      title: 'Vehiculos',
+      title: 'Compras',
       icon: 'mdi-car-lifted-pickup',
       to: '/dashboard/vehicles',
+    },
+    {
+      title: 'Ventas',
+      icon: 'mdi-star-box-multiple',
+      to: '/dashboard/posts',
     },
     {
       title: 'Propietarios',
@@ -23,9 +28,9 @@ const state = {
       to: '/dashboard/owners',
     },
     {
-      title: 'Publicaciones',
-      icon: 'mdi-star-box-multiple',
-      to: '/dashboard/posts',
+      title: 'Usuarios',
+      icon: 'mdi-account-outline',
+      to: '/dashboard/users',
     },
   ],
 }

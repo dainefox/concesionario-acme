@@ -3,7 +3,7 @@
     <material-card
       icon="mdi-car-lifted-pickup"
       icon-small
-      title="Todos los vehiculos"
+      title="Todas las compras"
       color="accent"
     >
       <v-simple-table>
@@ -24,6 +24,8 @@
           <tr
             v-for="(vehicle, index) in vehicles"
             :key="`${index}-${vehicle.placa}`"
+            class="cursor-pointer"
+            @click="gotToEdit(vehicle)"
           >
             <td class="uppercase">
               {{ vehicle.placa }}
@@ -130,6 +132,13 @@
         },
       ],
     }),
+
+    methods: {
+      gotToEdit ({ placa: licencePlate }) {
+        console.log(licencePlate)
+        this.$router.push({ path: `edit/${licencePlate}` })
+      },
+    },
   }
 </script>
 
@@ -139,5 +148,8 @@
 }
 .uppercase {
   text-transform: uppercase;
+}
+.cursor-pointer {
+  cursor: pointer;
 }
 </style>

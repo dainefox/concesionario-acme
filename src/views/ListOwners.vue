@@ -20,6 +20,8 @@
           <tr
             v-for="(owner, index) in owners"
             :key="`${index}-${owner.cedula}`"
+            class="cursor-pointer"
+            @click="touchOwner(owner)"
           >
             <td class="uppercase">
               {{ owner.cedula }}
@@ -38,7 +40,7 @@
       </v-simple-table>
     </material-card>
 
-    <owner-register />
+    <owner-register ref="ownerRegister" />
   </v-container>
 </template>
 
@@ -150,6 +152,12 @@
         },
       ],
     }),
+
+    methods: {
+      touchOwner (owner) {
+        this.$refs.ownerRegister.open(owner)
+      },
+    },
   }
 </script>
 
@@ -159,5 +167,8 @@
 }
 .uppercase {
   text-transform: uppercase;
+}
+.cursor-pointer {
+  cursor: pointer;
 }
 </style>

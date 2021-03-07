@@ -58,6 +58,18 @@
       </v-row>
 
       <v-row>
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            color="purple"
+            label="Valor"
+          />
+        </v-col>
+      </v-row>
+
+      <v-row>
         <v-col cols="12">
           <v-textarea
             color="purple"
@@ -76,7 +88,7 @@
             min-width="150"
             rounded
           >
-            Guardar vehiculo
+            Guardar compra
           </v-btn>
         </v-col>
       </v-row>

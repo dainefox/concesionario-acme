@@ -4,7 +4,7 @@
     fluid
     tag="section"
   >
-    <view-intro heading="Vehiculos" />
+    <view-intro heading="Compras" />
 
     <router-view />
   </v-container>

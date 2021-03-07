@@ -9,7 +9,7 @@
           icon="mdi-car-lifted-pickup"
         >
           <template #title>
-            Busca <small class="text-body-1"> una publicacion</small>
+            Busca <small class="text-body-1"> una venta</small>
           </template>
 
           <v-form>
@@ -76,7 +76,7 @@
                     min-width="150"
                     rounded
                   >
-                    Buscar vehiculo
+                    Buscar venta
                   </v-btn>
                 </v-col>
               </v-row>
@@ -86,7 +86,10 @@
       </v-col>
     </v-row>
 
-    <post-items-wrapper :posts="posts" />
+    <post-items-wrapper
+      :posts="posts"
+      :fn-post="touchPost"
+    />
 
     <v-btn
       fab
@@ -116,6 +119,12 @@
 
     computed: {
       posts: get('sales/posts'),
+    },
+
+    methods: {
+      touchPost ({ id, flag }) {
+        this.$router.push({ path: `${flag ? 'buy-as-intermediary' : 'buy'}/${id}` })
+      },
     },
   }
 </script>

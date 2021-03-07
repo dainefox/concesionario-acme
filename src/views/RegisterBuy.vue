@@ -6,7 +6,7 @@
         icon="mdi-car-lifted-pickup"
       >
         <template #title>
-          Crea <small class="text-body-1"> una venta como intermediario</small>
+          Crea <small class="text-body-1"> una venta</small>
         </template>
 
         <v-container class="py-0">
@@ -20,15 +20,15 @@
                   :complete="e6 > 1"
                   step="1"
                 >
-                  Registra un vehiculo
-                  <small>Busca un vehiculo o registra uno nuevo</small>
+                  Busca o registra un propietario
+                  <small>Busca un propietario o registra uno nuevo</small>
                 </v-stepper-step>
 
                 <v-stepper-content step="1">
-                  <vehicle-form :show-submit="false" />
+                  <owner-form />
                   <v-btn
                     color="primary"
-                    @click="e6 += 1"
+                    @click="e6 = 2"
                   >
                     Siguiente
                   </v-btn>
@@ -40,73 +40,21 @@
                   :complete="e6 > 2"
                   step="2"
                 >
-                  Busca o registra un propietario
-                  <small>Busca un propietario o registra uno nuevo</small>
-                </v-stepper-step>
-
-                <v-stepper-content step="2">
-                  <owner-form />
-                  <v-btn
-                    color="primary"
-                    @click="e6 += 1"
-                  >
-                    Siguiente
-                  </v-btn>
-                  <v-btn
-                    text
-                    @click="e6 -= 1"
-                  >
-                    Atras
-                  </v-btn>
-                </v-stepper-content>
-              </template>
-
-              <template v-if="!!id">
-                <v-stepper-step
-                  :complete="e6 > 2"
-                  step="3"
-                >
-                  Busca o registra el nuevo propietario
-                  <small>Busca un propietario o registra uno nuevo</small>
-                </v-stepper-step>
-
-                <v-stepper-content step="3">
-                  <owner-form />
-                  <v-btn
-                    color="primary"
-                    @click="e6 += 1"
-                  >
-                    Siguiente
-                  </v-btn>
-                  <v-btn
-                    text
-                    @click="e6 -= 1"
-                  >
-                    Atras
-                  </v-btn>
-                </v-stepper-content>
-              </template>
-
-              <template>
-                <v-stepper-step
-                  :complete="e6 > 3"
-                  :step="!!id ? '4' : '3'"
-                >
                   Vende el vehiculo
                   <small>Ingresa el valor que deseas por tu vehiculo</small>
                 </v-stepper-step>
 
-                <v-stepper-content :step="!!id ? '4' : '3'">
+                <v-stepper-content step="2">
                   <post-form />
                   <v-btn
                     color="primary"
-                    @click="e6 += 1"
+                    @click="e6 = 3"
                   >
                     Siguiente
                   </v-btn>
                   <v-btn
                     text
-                    @click="e6 -= 1"
+                    @click="e6 = 2"
                   >
                     Atras
                   </v-btn>
@@ -114,11 +62,11 @@
               </template>
 
               <template>
-                <v-stepper-step :step="!!id ? '5' : '4'">
+                <v-stepper-step step="3">
                   Verifica tu venta
                 </v-stepper-step>
 
-                <v-stepper-content :step="!!id ? '5' : '4'">
+                <v-stepper-content step="3">
                   <post-item
                     v-bind="post"
                     mdcols="12"
@@ -128,7 +76,7 @@
                     color="primary"
                     @click="e6 = 1"
                   >
-                    Publicar
+                    Vender
                   </v-btn>
                   <v-btn
                     text
@@ -151,14 +99,9 @@
     name: 'RegisterPost',
 
     components: {
-      VehicleForm: () => import(/* webpackChunkName: "vehicle-form" */ '@/components/VehicleForm.vue'),
       OwnerForm: () => import(/* webpackChunkName: "owner-form" */ '@/components/OwnerForm.vue'),
       PostForm: () => import(/* webpackChunkName: "post-form" */ '@/components/PostForm.vue'),
       PostItem: () => import(/* webpackChunkName: "post-item" */ '@/components/PostItem.vue'),
-    },
-
-    props: {
-      id: { type: [String, Number] },
     },
 
     data: () => ({
